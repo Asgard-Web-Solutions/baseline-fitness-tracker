@@ -20,7 +20,7 @@ it('regular users cannot access acp', function () {
 
     get(route('acp'))
         ->assertForbidden();
-})->wip(assignee: 'jonzenor');
+})->done(assignee: 'jonzenor');
 
 it('loads the user index livewire component', function () {
     //expect()->
