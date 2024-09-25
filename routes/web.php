@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminControlPanelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/acp', [AdminControlPanelController::class, 'index'])->name('acp');
 
 Route::middleware([
     'auth:sanctum',
