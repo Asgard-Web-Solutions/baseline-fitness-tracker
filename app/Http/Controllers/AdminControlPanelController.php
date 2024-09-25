@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AdminControlPanelController extends Controller
 {
@@ -11,6 +12,10 @@ class AdminControlPanelController extends Controller
      */
     public function index()
     {
+        if (! Gate::allows('acp-view')) {
+            abort(403);
+        }
+
         return view('admin.dashboard');
     }
 

@@ -3,7 +3,7 @@
 use function Pest\Laravel\get;
 
 it('loads the admin control panel', function () {
-    loginAsUser();
+    loginAsAdmin();
 
     get(route('acp'))
         ->assertOk()
@@ -20,7 +20,7 @@ it('regular users cannot access acp', function () {
 
     get(route('acp'))
         ->assertForbidden();
-})->todo(assignee: 'jonzenor');
+})->wip(assignee: 'jonzenor');
 
 it('loads the user index livewire component', function () {
     //expect()->

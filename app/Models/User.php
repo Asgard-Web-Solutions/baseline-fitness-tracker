@@ -62,4 +62,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isAdmin() {
+        return isset($this->is_admin);
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Carbon\Carbon;
 
 use function Pest\Laravel\actingAs;
 
@@ -49,6 +50,16 @@ function loginAsUser(?User $user = null): User
 {
     /** @var Illuminate\Contracts\Auth\Authenticatable $user */
     $user = $user ?? User::factory()->create();
+
+    actingAs($user);
+
+    return $user;
+}
+
+function loginAsAdmin(?User $user = null): User
+{
+    /** @var Illuminate\Contracts\Auth\Authenticatable $user */
+    $user = $user ?? User::factory()->state(['is_admin' => Carbon::now()])->create();
 
     actingAs($user);
 
