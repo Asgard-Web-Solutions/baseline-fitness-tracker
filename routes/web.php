@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/acp', [AdminControlPanelController::class, 'index'])->name('acp');
+Route::get('/acp', [AdminControlPanelController::class, 'index'])->name('acp')->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

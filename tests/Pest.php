@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\User;
+
+use function Pest\Laravel\actingAs;
+
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -41,7 +45,12 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function loginAsUser(?User $user = null): User
 {
-    // ..
+    /** @var Illuminate\Contracts\Auth\Authenticatable $user */
+    $user = $user ?? User::factory()->create();
+
+    actingAs($user);
+
+    return $user;
 }
