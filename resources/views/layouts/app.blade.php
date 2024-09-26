@@ -29,9 +29,9 @@
             <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="max-lg:!hidden hidden dark:flex" />
 
             <flux:navbar class="max-lg:hidden">
-                <flux:navbar.item icon="home" href="{{ route('dashboard') }}" current>Dashboard</flux:navbar.item>
+                <flux:navbar.item icon="home" href="/dashboard">Dashboard</flux:navbar.item>
                 @can('acp-view')
-                    <flux:navbar.item icon="shield-check" href="{{ route('acp') }}">ACP</flux:navbar.item>
+                    <flux:navbar.item icon="shield-check" href="/acp">ACP</flux:navbar.item>
                 @endcan
                 <flux:navbar.item icon="inbox" badge="12" href="#">Inbox</flux:navbar.item>
                 <flux:navbar.item icon="document-text" href="#">Documents</flux:navbar.item>
@@ -58,7 +58,9 @@
                 <flux:navbar.item class="max-lg:hidden" icon="information-circle" href="#" label="Help" />
             </flux:navbar>
 
-            <flux:profile avatar="https://fluxui.dev/img/demo/user.png" />
+            @auth
+                <flux:profile avatar="{{ auth()->user()->gravatarUrl() }}" />
+            @endauth
         </flux:header>
 
         <flux:sidebar stashable sticky class="border-r lg:hidden bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">

@@ -67,4 +67,13 @@ class User extends Authenticatable
     {
         return isset($this->is_admin);
     }
+
+    public function gravatarUrl($size = 80)
+    {
+        $email = strtolower(trim($this->email));
+        $hash = md5($email);
+        $default = 'wavatar';
+
+        return "https://www.gravatar.com/avatar/{$hash}?s={$size}&d={$default}&r=pg";
+    }
 }

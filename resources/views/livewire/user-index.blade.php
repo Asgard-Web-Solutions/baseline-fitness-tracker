@@ -12,7 +12,7 @@
             @foreach ($users as $user)
                 <flux:row :key="$user->id">
                     <flux:cell class="flex items-center gap-3">
-                        <flux:avatar size="xs" />
+                        <flux:avatar size="xs" src="{{ $user->gravatarUrl() }}" />
                         {{ $user->name }}
                     </flux:cell>
                     <flux:cell class="whitespace-nowrap">{{ $user->created_at }}</flux:cell>
