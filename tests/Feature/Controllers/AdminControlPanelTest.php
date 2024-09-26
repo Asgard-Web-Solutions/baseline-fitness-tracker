@@ -23,8 +23,12 @@ it('regular users cannot access acp', function () {
 })->done(assignee: 'jonzenor');
 
 it('loads the user index livewire component', function () {
-    //expect()->
-})->todo();
+    loginAsAdmin();
+
+    get(route('acp'))
+        ->assertOk()
+        ->assertSeeLivewire('user-index');
+})->done(assignee: 'jonzenor');
 
 it('displays the exercise index component', function () {
     //expect()->

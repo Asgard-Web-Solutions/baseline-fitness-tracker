@@ -29,7 +29,10 @@
             <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="max-lg:!hidden hidden dark:flex" />
 
             <flux:navbar class="max-lg:hidden">
-                <flux:navbar.item icon="home" href="#" current>Home</flux:navbar.item>
+                <flux:navbar.item icon="home" href="{{ route('dashboard') }}" current>Dashboard</flux:navbar.item>
+                @can('acp-view')
+                    <flux:navbar.item icon="shield-check" href="{{ route('acp') }}">ACP</flux:navbar.item>
+                @endcan
                 <flux:navbar.item icon="inbox" badge="12" href="#">Inbox</flux:navbar.item>
                 <flux:navbar.item icon="document-text" href="#">Documents</flux:navbar.item>
                 <flux:navbar.item icon="calendar" href="#">Calendar</flux:navbar.item>
