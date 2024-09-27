@@ -23,31 +23,31 @@
                     <flux:menu.item icon="pencil-square">Edit</flux:menu.item>
                 </flux:modal.trigger>
                 @if (auth()->user()->id != $user->id)
-                    {{-- <flux:button wire:click="remove" icon="trash" variant="danger">Delete</flux:button> --}}
+                    <flux:menu.item wire:click="remove" icon="trash" variant="danger">Delete</flux:menu.item>
                 @endif
-
-                <flux:modal name="user-delete" class="min-w-[22rem]">
-                    <form class="space-y-6" wire:submit="$parent.deleteUser({{ $user->id }})">
-                        <div>
-                            <flux:heading size="lg">Delete User?</flux:heading>
-                            <flux:subheading>
-                                <p>Do you want to delete this user?</p>
-                                <p>This action cannot be undone!</p>
-                            </flux:subheading>
-                        </div>
-                        <div class="flex">
-                            <flux:spacer />
-                            <flux:modal.close>
-                                <flux:button variant="ghost">Cancel</flux:button>
-                            </flux:modal.close>
-
-                            <flux:button type="submit" variant="danger">Delete User</flux:button>
-                        </div>
-                    </form>
-                </flux:modal>
-
             </flux:menu>
         </flux:dropdown>
+
+        <flux:modal name="user-delete" class="min-w-[22rem]">
+            <form class="space-y-6" wire:submit="$parent.deleteUser({{ $user->id }})">
+                <div>
+                    <flux:heading size="lg">Delete User?</flux:heading>
+                    <flux:subheading>
+                        <p>Do you want to delete this user?</p>
+                        <p>This action cannot be undone!</p>
+                    </flux:subheading>
+                </div>
+                <div class="flex">
+                    <flux:spacer />
+                    <flux:modal.close>
+                        <flux:button variant="ghost">Cancel</flux:button>
+                    </flux:modal.close>
+
+                    <flux:button type="submit" variant="danger">Delete User</flux:button>
+                </div>
+            </form>
+        </flux:modal>
+
     </flux:cell>
 
 
