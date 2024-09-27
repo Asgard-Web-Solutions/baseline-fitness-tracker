@@ -27,6 +27,11 @@ class UserRow extends Component
         $this->modal('user-delete')->show();
     }
 
+    public function confirmDeleteUser()
+    {
+        $this->dispatch('deleteUser', $this->user->id);
+    }
+
     public function render()
     {
         return view('livewire.user-row')->with([

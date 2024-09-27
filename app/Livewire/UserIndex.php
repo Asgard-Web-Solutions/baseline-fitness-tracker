@@ -11,7 +11,6 @@ class UserIndex extends Component
 {
     use WithPagination;
 
-
     public $sortBy = 'created_at';
     public $sortDirection = 'asc';
     public $editUserId = null;
