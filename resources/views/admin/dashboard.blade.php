@@ -3,7 +3,7 @@
         {{ __('Admin Control Panel') }}
     </x-slot>
 
-    <div class="w-1/2">
+    <div class="max-w-lg">
         @livewire('user-index')
     </div>
 </x-app-layout>

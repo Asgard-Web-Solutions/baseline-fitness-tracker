@@ -32,9 +32,17 @@ it('renders successfully', function () {
  it('has pagination navigation links', function () {
     User::factory()->count(30)->create();
 
-    // Test if pagination links appear on the component
-    Livewire::test(UserIndex::class) // Replace with your component name
-        ->assertSeeHtml("nextPage('page')") // Check for the "Next" link (common in pagination)
+    Livewire::test(UserIndex::class)
+        ->assertSeeHtml("nextPage('page')")
         ->call('nextPage')
-        ->assertSeeHtml("previousPage('page')"); // Check for the "Previous" link (if available)
+        ->assertSeeHtml("previousPage('page')");
  })->done(assignee: 'jonzenor');
+
+ it('has edit links', function () {
+    $user = User::factory()->create();
+
+    Livewire::test(UserIndex::class)
+        ->call('openEditUserModal', $user->id)
+        ->assertSeeLivewire('edit-user-modal')
+        ->assertSee($user->name);
+ })->wip(assignee: 'jonzenor');

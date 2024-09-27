@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Flux\Flux;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,8 +11,10 @@ class UserIndex extends Component
 {
     use WithPagination;
 
+
     public $sortBy = 'created_at';
     public $sortDirection = 'asc';
+    public $editUserId = null;
 
     public function sort($column) {
         if ($this->sortBy === $column) {
@@ -23,19 +26,24 @@ class UserIndex extends Component
     }
 
     #[\Livewire\Attributes\Computed]
-    public function users()
+    public function fetchUsers()
     {
-        return User::query()
-            ->tap(fn ($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
+        return User::orderBy($this->sortBy, $this->sortDirection)
             ->paginate(10);
+    }
+
+    public function deleteUser($userId)
+    {
+        User::findOrFail($userId)->delete();
+
+        Flux::modal('user-delete')->close();
+        $this->resetPage();
     }
 
     public function render()
     {
-        $users = $this->users();
-
         return view('livewire.user-index')->with([
-            'users' => $users,
+            'users' => $this->fetchUsers(),
         ]);
     }
 }
