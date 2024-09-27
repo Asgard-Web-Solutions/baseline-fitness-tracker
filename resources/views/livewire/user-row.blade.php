@@ -7,8 +7,8 @@
     <flux:cell class="whitespace-nowrap">{{ $user->created_at->format('d M, Y') }}</flux:cell>
 
     <flux:cell>
-        @if ($user->isAdmin())
-            <flux:badge size="sm" color="orange" inset="top bottom">Admin</flux:badge>
+        @if ($role == 'admin')
+            <flux:badge size="sm" color="pink" inset="top bottom">Admin</flux:badge>
         @else
             <flux:badge size="sm" color="blue" inset="top bottom">User</flux:badge>
         @endif
@@ -19,9 +19,7 @@
             <flux:button variant="ghost" size="sm" icon="ellipsis-horizontal" inset="top bottom"></flux:button>
 
             <flux:menu class="min-w-32">
-                <flux:modal.trigger name="edit-user-modal" >
-                    <flux:menu.item icon="pencil-square">Edit</flux:menu.item>
-                </flux:modal.trigger>
+                <flux:menu.item wire:click="edit" icon="pencil-square">Edit</flux:menu.item>
                 @if (auth()->user()->id != $user->id)
                     <flux:menu.item wire:click="remove" icon="trash" variant="danger">Delete</flux:menu.item>
                 @endif
@@ -44,6 +42,27 @@
                     </flux:modal.close>
 
                     <flux:button type="submit" variant="danger">Delete User</flux:button>
+                </div>
+            </form>
+        </flux:modal>
+
+        <flux:modal name="user-edit" class="md:w-96" variant="flyout">
+            <form wire:submit="updateUser" class="space-y-6">
+                <div>
+                    <flux:heading size="lg">Update User</flux:heading>
+                    <flux:subheading>Update the user details</flux:subheading>
+                </div>
+
+                <flux:input wire:model="name" label="Name" />
+                <flux:input type="email" wire:model="email" label="Email" />
+                <flux:radio.group wire:model="role" label="User Role">
+                    <flux:radio value="admin" label="Admin" wire:model="role" />
+                    <flux:radio value="user" label="User" wire:model="role" />
+                </flux:radio.group>
+
+                <div class="flex">
+                    <flux:spacer />
+                    <flux:button type="submit" variant="primary">Save Changes</flux:button>
                 </div>
             </form>
         </flux:modal>
