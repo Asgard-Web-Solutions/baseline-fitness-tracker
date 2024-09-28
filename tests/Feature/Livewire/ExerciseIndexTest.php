@@ -12,22 +12,10 @@ it('renders successfully', function () {
 it('displays the exercise row component', function () {
     $exercise = Exercise::factory()->create();
 
-    Livewire::test(ExerciseRow::class)
+    Livewire::test(ExerciseIndex::class)
         ->assertOk()
         ->assertSeeLivewire('exercise-row', ['exercise' => $exercise]);
 })->wip(assignee: 'jonzenor');
-
-it('paginates the exercise list', function () {
-    Exercise::factory()->count(30)->create();
-
-    // Simulate visiting the page and interacting with the Livewire component
-    Livewire::test(ExerciseIndex::class)
-        ->assertSee(Exercise::first()->name)
-        ->assertDontSee(Exercise::find(11)->name)
-        ->call('nextPage')
-        ->assertSee(Exercise::find(11)->name)
-        ->assertDontSee(Exercise::first()->name);
-})->todo(assignee: 'jonzenor');
 
 it('has a link to add a new exercise', function () {
     //expect()->

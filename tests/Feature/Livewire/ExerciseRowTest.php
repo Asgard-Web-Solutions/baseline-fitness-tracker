@@ -1,16 +1,22 @@
 <?php
 
 use App\Livewire\ExerciseRow;
+use App\Models\Exercise;
 use Livewire\Livewire;
 
 it('renders successfully', function () {
-    Livewire::test(ExerciseRow::class)
+    $exercise = Exercise::factory()->create();
+    Livewire::test(ExerciseRow::class, ['exercise' => $exercise])
         ->assertStatus(200);
-});
+})->done(assignee: 'jonzenor');
 
 it('displays the exercise information', function () {
-    //expect()->
-})->todo();
+    $exercise = Exercise::factory()->create();
+
+    Livewire::test(ExerciseRow::class, ['exercise' => $exercise])
+        ->assertOk()
+        ->assertSee($exercise->name);
+})->done(assignee: 'jonzenor');
 
 it('has an edit button', function () {
     //expect()->

@@ -2,12 +2,17 @@
 
 namespace App\Livewire;
 
+use App\Models\Exercise;
 use Livewire\Component;
 
 class ExerciseIndex extends Component
 {
     public function render()
     {
-        return view('livewire.exercise-index');
+        $exercises = Exercise::all();
+
+        return view('livewire.exercise-index')->with([
+            'exercises' => $exercises,
+        ]);
     }
 }
