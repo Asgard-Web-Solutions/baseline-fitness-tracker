@@ -4,6 +4,7 @@
         {{ $user->name }}
     </flux:cell>
 
+    <flux:cell>{{ $user->email }}</flux:cell>
     <flux:cell class="whitespace-nowrap">{{ $user->created_at->format('d M, Y') }}</flux:cell>
 
     <flux:cell>
