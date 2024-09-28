@@ -20,7 +20,7 @@
 
             <flux:menu class="min-w-32">
                 <flux:menu.item wire:click="edit" icon="pencil-square">Edit</flux:menu.item>
-                @if (auth()->user()->id != $user->id)
+                @if (auth()->check() && auth()->user()->id != $user->id)
                     <flux:menu.item wire:click="remove" icon="trash" variant="danger">Delete</flux:menu.item>
                 @endif
             </flux:menu>

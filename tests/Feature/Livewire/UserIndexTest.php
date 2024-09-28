@@ -38,11 +38,10 @@ it('renders successfully', function () {
         ->assertSeeHtml("previousPage('page')");
  })->done(assignee: 'jonzenor');
 
- it('has edit links', function () {
+it('loads the user row component', function () {
     $user = User::factory()->create();
 
     Livewire::test(UserIndex::class)
-        ->call('openEditUserModal', $user->id)
-        ->assertSeeLivewire('edit-user-modal')
-        ->assertSee($user->name);
- })->wip(assignee: 'jonzenor');
+        ->assertOk()
+        ->assertSeeLivewire('user-row', ['user' => $user]);
+})->done(assignee: 'jonzenor');
