@@ -31,5 +31,9 @@ it('loads the user index livewire component', function () {
 })->done(assignee: 'jonzenor');
 
 it('displays the exercise index component', function () {
-    //expect()->
-})->todo();
+    loginAsAdmin();
+
+    get(route('acp'))
+        ->assertOk()
+        ->assertSeeLivewire('exercise-index');
+})->done(assignee: 'jonzenor');
