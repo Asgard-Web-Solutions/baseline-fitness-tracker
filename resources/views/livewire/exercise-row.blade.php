@@ -1,11 +1,33 @@
 <flux:row>
     <flux:cell variant="strong">{{ $exercise->name }}</flux:cell>
-    <flux:cell>{{ $exercise->reps }}</flux:cell>
-    <flux:cell>{{ $exercise->distance }} {{ $exercise->distance_units }}</flux:cell>
-    <flux:cell>{{ $exercise->weight_multiplier }}</flux:cell>
+    <flux:cell>
+        @if ($exercise->track_stat == 'reps')
+            <span class="font-bold text-blue-400">{{ $exercise->reps }}</span>
+        @else
+            {{ $exercise->reps }}
+        @endif
+    </flux:cell>
+    <flux:cell>
+        @if ($exercise->track_stat == 'distance')
+            <span class="font-bold text-blue-400">{{ $exercise->distance }} {{ $exercise->distance_units }}</span>
+        @else
+            {{ $exercise->distance }} {{ $exercise->distance_units }}
+        @endif
+    </flux:cell>
+    <flux:cell>
+        @if ($exercise->track_stat == 'weight')
+            <span class="font-bold text-blue-400">{{ $exercise->weight_multiplier }}</span>
+        @else
+            {{ $exercise->weight_multiplier }}
+        @endif
+    </flux:cell>
     <flux:cell>
         @if (!is_null($exercise->time_seconds))
+            @if ($exercise->track_stat == 'time')
+                <span class="font-bold text-blue-400">{{ gmdate('i:s', $exercise->time_seconds) }}</span>
+            @else
             {{ gmdate('i:s', $exercise->time_seconds) }}
+            @endif
         @endif
     </flux:cell>
     <flux:cell align="right">
@@ -40,8 +62,8 @@
 
         <flux:modal name="exercise-edit" class="space-y-6" variant="flyout">
             <div>
-                <flux:heading size="lg">Add Exercise</flux:heading>
-                <flux:subheading>Add an exercise to the baseline fitness requriements.</flux:subheading>
+                <flux:heading size="lg">Edit Exercise</flux:heading>
+                <flux:subheading>Edit the exercise to the baseline fitness requriements.</flux:subheading>
             </div>
 
             <form wire:submit="update" class="space-y-6">
@@ -59,6 +81,22 @@
                     <flux:input label="Distance Units" placeholder="The units used for the distance (ft, kilometers, etc)" wire:model="distanceUnits" />
                     <flux:input label="Weight Multiplier" placeholder="The weight required based on the users body weight" wire:model="weightMultiplier" />
                     <flux:input label="Time in Seconds" placeholder="The time required to complete the exercise, in seconds" wire:model="timeSeconds" />
+                </flux:card>
+
+                <flux:card class="max-w-md space-y-6">
+                    <div>
+                        <flux:heading>Stat Tracking</flux:heading>
+                        <flux:subheading>Select which stat will be the primary stat that<br />users will have to work up to.</flux:subheading>
+                    </div>
+
+                    <flux:radio.group wire:model="trackStat" label="Choose what stat will be tracked">
+                        <flux:radio value="reps" label="Reps" />
+                        <flux:radio value="distance" label="Distance" />
+                        <flux:radio value="weight" label="Weight" />
+                        <flux:radio value="time" label="Time" />
+                    </flux:radio.group>
+
+                    <flux:checkbox wire:model="invertTimeStat" label="Target time is Minimum goal instead of max time" />
                 </flux:card>
 
                 <div class="flex">

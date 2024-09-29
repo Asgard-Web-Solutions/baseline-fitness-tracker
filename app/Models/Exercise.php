@@ -17,5 +17,7 @@ class Exercise extends Model
         'distance_units',
         'weight_multiplier',
         'time_seconds',
+        'invert_time_stat',
+        'track_stat',
     ];
 }

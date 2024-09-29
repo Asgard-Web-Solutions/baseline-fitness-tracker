@@ -32,6 +32,22 @@
                     <flux:input label="Time in Seconds" placeholder="The time required to complete the exercise, in seconds" wire:model="timeSeconds" />
                 </flux:card>
 
+                <flux:card class="max-w-md space-y-6">
+                    <div>
+                        <flux:heading>Stat Tracking</flux:heading>
+                        <flux:subheading>Select which stat will be the primary stat that<br />users will have to work up to.</flux:subheading>
+                    </div>
+
+                    <flux:radio.group wire:model="trackStat" label="Choose what stat will be tracked">
+                        <flux:radio value="reps" label="Reps" />
+                        <flux:radio value="distance" label="Distance" />
+                        <flux:radio value="weight" label="Weight" />
+                        <flux:radio value="time" label="Time" />
+                    </flux:radio.group>
+
+                    <flux:checkbox wire:model="invertTimeStat" label="Target time is Minimum goal instead of max time" />
+                </flux:card>
+
                 <div class="flex">
                     <flux:spacer />
 

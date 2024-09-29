@@ -34,6 +34,12 @@ class ExerciseIndex extends Component
     #[Validate('integer|nullable|max:10000')]
     public $timeSeconds = null;
 
+    #[Validate('integer|nullable|min:0|max:1')]
+    public $invertTimeStat = null;
+
+    #[Validate('string|nullable|max:32')]
+    public $trackStat = null;
+
     public function mount()
     {
         $this->refreshExercises();
@@ -52,6 +58,8 @@ class ExerciseIndex extends Component
             'distance_units' => $this->distanceUnits,
             'weight_multiplier' => $this->weightMultiplier,
             'time_seconds' => $this->timeSeconds,
+            'invert_time_stat' => $this->invertTimeStat,
+            'track_stat' => $this->trackStat,
         ]);
 
         $this->resetForm();
@@ -63,7 +71,7 @@ class ExerciseIndex extends Component
 
     public function resetForm()
     {
-        $this->reset(['name', 'description', 'reps', 'distance', 'distanceUnits', 'weightMultiplier', 'timeSeconds']);
+        $this->reset(['name', 'description', 'reps', 'distance', 'distanceUnits', 'weightMultiplier', 'timeSeconds', 'invertTimeStat', 'trackStat']);
     }
 
     public function refreshExercises()

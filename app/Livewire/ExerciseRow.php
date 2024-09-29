@@ -31,6 +31,12 @@ class ExerciseRow extends Component
     #[Validate('integer|nullable|max:10000')]
     public $timeSeconds = null;
 
+    #[Validate('integer|nullable|min:0|max:1')]
+    public $invertTimeStat = null;
+
+    #[Validate('string|nullable|max:32')]
+    public $trackStat = null;
+
     public function mount(Exercise $exercise)
     {
         $this->name = $exercise->name;
@@ -40,6 +46,8 @@ class ExerciseRow extends Component
         $this->distanceUnits = $exercise->distance_units;
         $this->weightMultiplier = $exercise->weight_multiplier;
         $this->timeSeconds = $exercise->time_seconds;
+        $this->invertTimeStat = $exercise->invert_time_stat;
+        $this->trackStat = $exercise->track_stat;
     }
 
     public function update()
@@ -54,9 +62,9 @@ class ExerciseRow extends Component
             'distance_units' => $this->distanceUnits,
             'weight_multiplier' => $this->weightMultiplier,
             'time_seconds' => $this->timeSeconds,
+            'invert_time_stat' => $this->invertTimeStat,
+            'track_stat' => $this->trackStat,
         ]);
-
-        $this->resetForm();
 
         $this->modal('exercise-edit')->close();
     }
@@ -70,7 +78,9 @@ class ExerciseRow extends Component
             'distance',
             'distanceUnits',
             'weightMultiplier',
-            'timeSeconds'
+            'timeSeconds',
+            'invertTimeStat',
+            'trackStat',
         ]);
     }
 
