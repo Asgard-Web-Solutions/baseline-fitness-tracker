@@ -10,9 +10,6 @@
         </flux:tabs>
 
         <flux:tab.panel name="users">
-            <flux:heading size="lg">User Manager</flux:heading>
-            <flux:subheading>Manage the User accounts registered on the site.</flux:subheading>
-
             @livewire('user-index')
         </flux:tab.panel>
 

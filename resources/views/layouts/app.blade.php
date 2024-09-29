@@ -29,7 +29,7 @@
             <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="max-lg:!hidden hidden dark:flex" />
 
             <flux:navbar class="max-lg:hidden">
-                <flux:navbar.item icon="home" href="/dashboard">Dashboard</flux:navbar.item>
+                <flux:navbar.item icon="bolt" href="/dashboard">Fitness Dashboard</flux:navbar.item>
                 @can('acp-view')
                     <flux:navbar.item icon="shield-check" href="/acp">ACP</flux:navbar.item>
                 @endcan
@@ -52,10 +52,10 @@
             <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="hidden px-2 dark:flex" />
 
             <flux:navlist variant="outline">
-                <flux:navlist.item icon="home" href="#" current>Home</flux:navlist.item>
-                <flux:navlist.item icon="inbox" badge="12" href="#">Inbox</flux:navlist.item>
-                <flux:navlist.item icon="document-text" href="#">Documents</flux:navlist.item>
-                <flux:navlist.item icon="calendar" href="#">Calendar</flux:navlist.item>
+                <flux:navlist.item icon="bolt" href="/dashboard">Fitness Dashboard</flux:navlist.item>
+                @can('acp-view')
+                    <flux:navlist.item icon="inbox" href="/acp">ACP</flux:navlist.item>
+                @endcan
 
                 <flux:navlist.group expandable heading="Favorites" class="max-lg:hidden">
                     <flux:navlist.item href="#">Marketing site</flux:navlist.item>

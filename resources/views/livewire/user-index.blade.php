@@ -1,5 +1,7 @@
 <div>
     {{-- Care about people's approval and you will be their prisoner. --}}
+    <flux:heading size="lg">User Manager</flux:heading>
+    <flux:subheading>Manage the User accounts registered on the site.</flux:subheading>
 
     <flux:table :paginate="$users" size="xs" class="mt-8">
         <flux:columns>
