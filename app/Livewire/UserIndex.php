@@ -36,6 +36,7 @@ class UserIndex extends Component
         User::findOrFail($userId)->delete();
 
         Flux::modal('user-delete')->close();
+        Flux::toast('User deleted');
         $this->resetPage();
     }
 

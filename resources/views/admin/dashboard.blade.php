@@ -17,9 +17,6 @@
         </flux:tab.panel>
 
         <flux:tab.panel name="exercises">
-            <flux:heading size="lg">Exercise Manager</flux:heading>
-            <flux:subheading>Manage the exercises required for the Baseline Fitness Challenge.</flux:subheading>
-
             @livewire('exercise-index')
         </flux:tab.panel>
     </flux:tab.group>

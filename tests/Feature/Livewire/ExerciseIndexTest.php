@@ -15,11 +15,13 @@ it('displays the exercise row component', function () {
     Livewire::test(ExerciseIndex::class)
         ->assertOk()
         ->assertSeeLivewire('exercise-row', ['exercise' => $exercise]);
-})->wip(assignee: 'jonzenor');
+})->done(assignee: 'jonzenor');
 
 it('has a link to add a new exercise', function () {
-    //expect()->
-})->todo();
+    Livewire::test(ExerciseIndex::class)
+        ->assertOk()
+        ->assertSee('Add Exercise');
+})->wip(assignee: 'jonzenor');
 
 it('opens the exercise add modal', function () {
     //expect()->
