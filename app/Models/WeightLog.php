@@ -14,6 +14,11 @@ class WeightLog extends Model
 
     protected $keyType = 'string';
 
+    protected $fillable = [
+        'user_id',
+        'weight'
+    ];
+
     protected static function boot()
     {
         parent::boot();
