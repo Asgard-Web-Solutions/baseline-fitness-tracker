@@ -1,7 +1,7 @@
 <div class="mt-6">
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 
-    <flux:card size="sm" class="space-y-6 max-w-64">
+    <flux:card size="sm" class="space-y-4 max-w-64">
         <flux:subheading size="sm">Latest Weight</flux:subheading>
 
         <div class="flex">
@@ -35,4 +35,7 @@
             </flux:modal>
         </div>
     </flux:card>
+
+    @livewire('user-exercise-table')
+
 </div>
