@@ -6,19 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class ExerciseLog extends Model
+class ExerciseStatus extends Model
 {
-    /** @use HasFactory<\Database\Factories\ExerciseLogFactory> */
+    /** @use HasFactory<\Database\Factories\ExerciseStatusFactory> */
     use HasFactory;
 
     protected $fillable = [
         'user_id',
         'exercise_id',
-        'value'
+        'exercise_log_id',
+        'completed',
+        'deficient_amount'
     ];
 
-    public function user(): BelongsTo
+    public function exercise(): BelongsTo
     {
-        return $this->belongsTo(App\Models\User::class);
+        return $this->belongsTo(App\Models\Exercise::class);
     }
 }
