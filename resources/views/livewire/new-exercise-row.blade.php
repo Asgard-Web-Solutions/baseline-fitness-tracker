@@ -1,6 +1,6 @@
     <flux:row :key="$exercise->id">
         <flux:cell variant="strong">{{ $exercise->name }}</flux:cell>
-        <flux:cell> -- Not Started --</flux:cell>
+        <flux:cell colspan="3"><flux:badge size="sm">-- Not Started --</flux:badge></flux:cell>
         <flux:cell>
             <flux:button icon="document-plus" size="sm" wire:click.stop="recordExercise" variant="ghost">Record</flux:button>
 
@@ -54,7 +54,6 @@
 
                                 <flux:separator variant="subtle" />
                             @endif
-
                         </div>
 
                         <div class="flex mt-6">

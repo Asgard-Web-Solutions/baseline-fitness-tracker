@@ -25,8 +25,8 @@
         <flux:header container class="border-b bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
-            <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc." class="max-lg:hidden dark:hidden" />
-            <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="max-lg:!hidden hidden dark:flex" />
+            <flux:brand href="/" logo="https://fluxui.dev/img/demo/logo.png" name="Baseline Physical Aptitude Tracker" class="max-lg:hidden dark:hidden" />
+            <flux:brand href="/" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Baseline Physical Aptitude Tracker" class="max-lg:!hidden hidden dark:flex" />
 
             <flux:navbar class="max-lg:hidden">
                 <flux:navbar.item icon="bolt" href="/dashboard">Fitness Dashboard</flux:navbar.item>

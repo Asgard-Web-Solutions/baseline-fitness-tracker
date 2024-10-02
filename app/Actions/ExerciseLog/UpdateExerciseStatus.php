@@ -36,7 +36,7 @@ class UpdateExerciseStatus
 
         if ($exercise->track_stat == 'weight') {
             $weightLog = GetLatestUserWeight::execute($user);
-            $targetWeight = ($weightLog->weight * $exercise->weight_multiplier);
+            $targetWeight = round($weightLog->weight * $exercise->weight_multiplier);
 
             if ($data >= $targetWeight) {
                 $completed = 1;

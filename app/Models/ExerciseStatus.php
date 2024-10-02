@@ -21,6 +21,16 @@ class ExerciseStatus extends Model
 
     public function exercise(): BelongsTo
     {
-        return $this->belongsTo(App\Models\Exercise::class);
+        return $this->belongsTo(Exercise::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function exerciseLog(): BelongsTo
+    {
+        return $this->belongsTo(ExerciseLog::class);
     }
 }

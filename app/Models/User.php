@@ -83,4 +83,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WeightLog::class);
     }
+
+    public function exerciseStatuses(): HasMany
+    {
+        return $this->hasMany(ExerciseStatus::class);
+    }
 }

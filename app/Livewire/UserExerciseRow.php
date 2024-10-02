@@ -4,14 +4,17 @@ namespace App\Livewire;
 
 use App\Actions\ExerciseLog\CreateExerciseLogEntry;
 use App\Actions\ExerciseLog\GetLatestUserWeight;
+use App\Actions\ExerciseLog\GetOrCreateExerciseStatus;
 use App\Models\Exercise;
-use App\Models\ExerciseLog;
+use App\Models\ExerciseStatus;
 use App\Models\WeightLog;
 use Flux\Flux;
 use Livewire\Component;
 
-class NewExerciseRow extends Component
+class UserExerciseRow extends Component
 {
+    public ExerciseStatus $status;
+
     public Exercise $exercise;
 
     public ?WeightLog $weightLog;
@@ -27,6 +30,7 @@ class NewExerciseRow extends Component
     public function mount()
     {
         $user = auth()->user();
+        $this->exercise = $this->status->exercise;
         $this->weightLog = GetLatestUserWeight::execute($user);
     }
 
@@ -74,6 +78,14 @@ class NewExerciseRow extends Component
         Flux::toast($this->exercise->name . ' Record Saved');
 
         $this->modal('exercise-record')->close();
+
+        $this->refreshSelf();
+    }
+
+    public function refreshSelf()
+    {
+        $this->status = GetOrCreateExerciseStatus::execute(auth()->user(), $this->exercise);
+        $this->dispatch('$refresh');
     }
 
     private function validateCheckboxes()
@@ -105,6 +117,6 @@ class NewExerciseRow extends Component
 
     public function render()
     {
-        return view('livewire.new-exercise-row');
+        return view('livewire.user-exercise-row');
     }
 }

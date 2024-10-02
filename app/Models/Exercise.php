@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Exercise extends Model
 {
@@ -20,4 +21,9 @@ class Exercise extends Model
         'invert_time_stat',
         'track_stat',
     ];
+
+    public function exerciseStatuses(): HasMany
+    {
+        return $this->hasMany(ExerciseStatus::class);
+    }
 }
