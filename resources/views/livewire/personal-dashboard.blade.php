@@ -36,6 +36,12 @@
         </div>
     </flux:card>
 
-    @livewire('user-exercise-table')
+    @if (isset($weight))
+        @livewire('user-exercise-table')
+    @else
+        <flux:card class="mt-6">
+            <flux:subheading>You will need to set your weight before you can track your exercises.</flux:subheading>
+        </flux:card>
+    @endif
 
 </div>

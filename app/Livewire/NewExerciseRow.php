@@ -74,6 +74,16 @@ class NewExerciseRow extends Component
         Flux::toast($this->exercise->name . ' Record Saved');
 
         $this->modal('exercise-record')->close();
+
+        $this->refreshSelf();
+    }
+
+    public function refreshSelf()
+    {
+        $this->js('window.location.reload()');
+
+        $this->dispatch('$refresh');
+        $this->dispatch('$refreshParent');
     }
 
     private function validateCheckboxes()

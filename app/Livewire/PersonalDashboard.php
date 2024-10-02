@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Actions\ExerciseLog\GetLatestUserWeight;
 use App\Models\WeightLog;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -16,7 +17,7 @@ class PersonalDashboard extends Component
     public function mount()
     {
         $user = auth()->user();
-        $this->weight = $user->weightLogs()->latest()->first();
+        $this->weight = GetLatestUserWeight::execute($user);
     }
 
     public function updateWeight()
