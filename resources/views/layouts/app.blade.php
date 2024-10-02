@@ -41,7 +41,17 @@
             <flux:spacer />
 
             @auth
-                <flux:profile avatar="{{ auth()->user()->gravatarUrl() }}" />
+                <flux:dropdown position="bottom" align="end">
+                    <flux:profile avatar="{{ auth()->user()->gravatarUrl() }}" />
+
+                    <flux:navmenu>
+                        <flux:navmenu.item href="{{ route('profile.show') }}" icon="user-circle">Profile</flux:navmenu.itme>
+                        <form method="POST" action="{{ route('logout') }}" class="inline">
+                            @csrf
+                            <flux:navmenu.item type="submit" icon="power">Logout</flux:navmenu.item>
+                        </form>
+                    </flux:navmenu>
+                </flux:dropdown>
             @endauth
         </flux:header>
 
