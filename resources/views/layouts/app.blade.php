@@ -65,8 +65,8 @@
         <flux:sidebar stashable sticky class="border-r lg:hidden bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-            <flux:brand href="#" logo="https://fluxui.dev/img/demo/logo.png" name="Acme Inc." class="px-2 dark:hidden" />
-            <flux:brand href="#" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="Acme Inc." class="hidden px-2 dark:flex" />
+            <flux:brand href="/" logo="https://fluxui.dev/img/demo/logo.png" name="BPA Tracker." class="px-2 dark:hidden" />
+            <flux:brand href="/" logo="https://fluxui.dev/img/demo/dark-mode-logo.png" name="BPA Tracker." class="hidden px-2 dark:flex" />
 
             <flux:navlist variant="outline">
                 <flux:navlist.item icon="bolt" href="/dashboard">Fitness Dashboard</flux:navlist.item>
@@ -74,19 +74,8 @@
                     <flux:navlist.item icon="inbox" href="/acp">ACP</flux:navlist.item>
                 @endcan
 
-                <flux:navlist.group expandable heading="Favorites" class="max-lg:hidden">
-                    <flux:navlist.item href="#">Marketing site</flux:navlist.item>
-                    <flux:navlist.item href="#">Android app</flux:navlist.item>
-                    <flux:navlist.item href="#">Brand guidelines</flux:navlist.item>
-                </flux:navlist.group>
             </flux:navlist>
 
-            <flux:spacer />
-
-            <flux:navlist variant="outline">
-                <flux:navlist.item icon="cog-6-tooth" href="#">Settings</flux:navlist.item>
-                <flux:navlist.item icon="information-circle" href="#">Help</flux:navlist.item>
-            </flux:navlist>
         </flux:sidebar>
 
         <flux:main container>

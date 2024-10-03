@@ -1,6 +1,6 @@
 {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
 <div class="space-y-8">
-    <div class="w-8/12 mx-auto">
+    <div class="w-full mx-auto lg:w-8/12">
         <flux:card size="lg" class="my-8 space-y-8">
             <flux:heading size="xl">Track Your Journey to the Iron Council's Baseline Physical Aptitude Badge</flux:heading>
             <flux:subheading>Stay motivated, track your progress, and conquer your fitness goals one step at a time.</flux:subheading>
