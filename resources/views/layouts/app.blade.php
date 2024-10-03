@@ -21,7 +21,7 @@
         @livewireStyles
         @fluxStyles
     </head>
-    <body class="min-h-screen antialiased bg-white dark:bg-zinc-800">
+    <body class="min-h-screen antialiased bg-slate-200 dark:bg-zinc-800 text-slate-800">
         <flux:header container class="border-b bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
@@ -53,6 +53,13 @@
                     </flux:navmenu>
                 </flux:dropdown>
             @endauth
+
+            @guest
+                <div class="flex">
+                    <flux:navmenu.item href="{{ route('login') }}" align="end">Login</flux:navmenu.item>
+                    <flux:navmenu.item href="{{ route('register') }}" align="end" class="ml-4">Register</flux:navmenu.item>
+                </div>
+            @endguest
         </flux:header>
 
         <flux:sidebar stashable sticky class="border-r lg:hidden bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-700">

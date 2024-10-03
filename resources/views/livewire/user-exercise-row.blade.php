@@ -36,8 +36,7 @@
 
     @if ($exercise->track_stat == 'time')
         @php
-            $format = 'i:s';
-            if (strlen($status->exerciseLog->value) > 4) { $format = 'H:i:s'; }
+            $format = 'H:i:s';
         @endphp
 
         <flux:cell>
