@@ -36,9 +36,11 @@
 
                 <flux:separator vertical variant="subtle" class="my-2"/>
 
+                <flux:navbar.item icon="inbox-arrow-down" href="https://suggest.gg/bpatracker/ideas" target="_blank">Suggest Ideas</flux:navbar.item>
             </flux:navbar>
 
             <flux:spacer />
+
 
             @auth
                 <flux:dropdown position="bottom" align="end">
@@ -74,6 +76,7 @@
                     <flux:navlist.item icon="inbox" href="/acp">ACP</flux:navlist.item>
                 @endcan
 
+                <flux:navlist.item icon="inbox-arrow-down" href="https://suggest.gg/bpatracker/ideas" target="_blank">Suggest Ideas</flux:navbar.item>
             </flux:navlist>
 
         </flux:sidebar>
