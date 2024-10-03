@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->integer('reps')->nullable();
             $table->integer('distance')->nullable();
             $table->string('distance_units')->nullable();

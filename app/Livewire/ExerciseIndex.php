@@ -34,7 +34,7 @@ class ExerciseIndex extends Component
     #[Validate('integer|nullable|max:10000')]
     public $timeSeconds = null;
 
-    #[Validate('integer|nullable|min:0|max:1')]
+    #[Validate('boolean|nullable|min:0|max:1')]
     public $invertTimeStat = null;
 
     #[Validate('string|nullable|max:32')]
@@ -58,7 +58,7 @@ class ExerciseIndex extends Component
             'distance_units' => $this->distanceUnits,
             'weight_multiplier' => $this->weightMultiplier,
             'time_seconds' => $this->timeSeconds,
-            'invert_time_stat' => $this->invertTimeStat,
+            'invert_time_stat' => (isset($this->invertTimeStat)) ? 1 : 0,
             'track_stat' => $this->trackStat,
         ]);
 
