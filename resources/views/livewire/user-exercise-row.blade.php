@@ -105,10 +105,14 @@
                         @endif
 
                         @if ($exercise->weight_multiplier)
+                            @php
+                                $targetWeight = round($exercise->weight_multiplier * $weightLog->weight);
+                            @endphp
+
                             @if ($exercise->track_stat == 'weight')
-                                <flux:input wire:model="weight" label="Weight Completed:" description="Target Weight: {{ round($weightLog->weight * $exercise->weight_multiplier) }} Lbs" />
+                                <flux:input wire:model="weight" label="Weight Completed:" description="Target Weight: {{ $targetWeight }} Lbs" />
                             @else
-                                <flux:switch wire:model="weight" label="Weight Used: {{ $exercise->reps }}" description="Did use the required weight?" />
+                                <flux:switch wire:model="weight" label="Weight Used: {{ $targetWeight }} Lbs" description="Did use the required weight?" />
                             @endif
 
                             <flux:separator variant="subtle" />
