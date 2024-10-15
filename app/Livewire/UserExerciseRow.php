@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Actions\ExerciseLog\ConvertTimestampToSeconds;
 use App\Actions\ExerciseLog\CreateExerciseLogEntry;
 use App\Actions\ExerciseLog\GetLatestUserWeight;
 use App\Actions\ExerciseLog\GetOrCreateExerciseStatus;
@@ -69,10 +70,12 @@ class UserExerciseRow extends Component
 
         if ($this->exercise->track_stat == 'time') {
             $this->validate([
-                'time' => 'required|integer|min:1|max:999999'
+                'time' => 'required|string|min:1|max:16'
             ]);
 
-            CreateExerciseLogEntry::execute($this->exercise, $this->time);
+            $seconds = ConvertTimestampToSeconds::execute($this->time);
+
+            CreateExerciseLogEntry::execute($this->exercise, $seconds);
         }
 
         Flux::toast($this->exercise->name . ' Record Saved');
