@@ -51,7 +51,7 @@
 
                             @if ($exercise->time_seconds)
                                 @if ($exercise->track_stat == 'time')
-                                    <flux:input wire:model="time" label="Time Completed (in Seconds):" />
+                                    <flux:input wire:model="time" label="Time Completed (in hh:mm:ss format):" />
                                 @else
                                     <flux:switch wire:model="time" label="Time Completed: {{ $exercise->time_seconds }}" description="Did you perform in the required time?" />
                                 @endif

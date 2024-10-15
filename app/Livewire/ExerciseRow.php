@@ -53,6 +53,12 @@ class ExerciseRow extends Component
     {
         $this->validate();
 
+        $invertTimeStat = false;
+
+        if (isset($this->invertTimeStat) && $this->invertTimeStat) {
+            $invertTimeStat = true;
+        }
+
         $this->exercise->update([
             'name' => $this->name,
             'description' => $this->description,
@@ -61,7 +67,7 @@ class ExerciseRow extends Component
             'distance_units' => $this->distanceUnits,
             'weight_multiplier' => $this->weightMultiplier,
             'time_seconds' => $this->timeSeconds,
-            'invert_time_stat' => (isset($this->invertTimeStat)) ? 1 : 0,
+            'invert_time_stat' => $invertTimeStat,
             'track_stat' => $this->trackStat,
         ]);
 
