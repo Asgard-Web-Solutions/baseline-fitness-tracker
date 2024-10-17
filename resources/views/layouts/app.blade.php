@@ -36,7 +36,7 @@
 
                 <flux:separator vertical variant="subtle" class="my-2"/>
 
-                <flux:navbar.item icon="inbox-arrow-down" href="https://suggest.gg/bpatracker/ideas" target="_blank">Suggest Ideas</flux:navbar.item>
+                <flux:navbar.item icon="inbox-arrow-down" href="https://suggest.gg/bpatracker/ideas" target="_blank" data-pan="suggest-ideas">Suggest Ideas</flux:navbar.item>
             </flux:navbar>
 
             <flux:spacer />
@@ -47,10 +47,10 @@
                     <flux:profile avatar="{{ auth()->user()->gravatarUrl() }}" />
 
                     <flux:navmenu>
-                        <flux:navmenu.item href="{{ route('profile.show') }}" icon="user-circle">Profile</flux:navmenu.itme>
+                        <flux:navmenu.item href="{{ route('profile.show') }}" icon="user-circle" data-pan="user-profile">Profile</flux:navmenu.itme>
                         <form method="POST" action="{{ route('logout') }}" class="inline">
                             @csrf
-                            <flux:navmenu.item type="submit" icon="power">Logout</flux:navmenu.item>
+                            <flux:navmenu.item type="submit" icon="power" data-pan="user-logout">Logout</flux:navmenu.item>
                         </form>
                     </flux:navmenu>
                 </flux:dropdown>
@@ -58,8 +58,8 @@
 
             @guest
                 <div class="flex">
-                    <flux:navmenu.item href="{{ route('login') }}" align="end">Login</flux:navmenu.item>
-                    <flux:navmenu.item href="{{ route('register') }}" align="end" class="ml-4">Register</flux:navmenu.item>
+                    <flux:navmenu.item href="{{ route('login') }}" align="end" data-pan="user-login">Login</flux:navmenu.item>
+                    <flux:navmenu.item href="{{ route('register') }}" align="end" class="ml-4" data-pan="user-register-link">Register</flux:navmenu.item>
                 </div>
             @endguest
         </flux:header>
@@ -76,7 +76,7 @@
                     <flux:navlist.item icon="inbox" href="/acp">ACP</flux:navlist.item>
                 @endcan
 
-                <flux:navlist.item icon="inbox-arrow-down" href="https://suggest.gg/bpatracker/ideas" target="_blank">Suggest Ideas</flux:navbar.item>
+                <flux:navlist.item icon="inbox-arrow-down" href="https://suggest.gg/bpatracker/ideas" target="_blank" data-pan="suggest-ideas">Suggest Ideas</flux:navbar.item>
             </flux:navlist>
 
         </flux:sidebar>

@@ -71,7 +71,7 @@
     </flux:cell>
 
     <flux:cell>
-        <flux:button icon="document-plus" size="sm" wire:click.stop="recordExercise" variant="ghost">Record</flux:button>
+        <flux:button icon="document-plus" size="sm" wire:click.stop="recordExercise" variant="ghost" data-pan="record-exercise-{{ $exercise->name }}" >Record</flux:button>
 
         <flux:modal name="exercise-record" class="space-y-6 min-w-96">
             <div>
@@ -132,7 +132,7 @@
 
                     <div class="flex mt-6">
                         <flux:spacer />
-                        <flux:button type="submit" variant="primary">Save Record</flux:button>
+                        <flux:button type="submit" variant="primary" data-pan="save-exercise-{{ $exercise->name }}">Save Record</flux:button>
                     </div>
                 </flux:fieldset>
             </form>

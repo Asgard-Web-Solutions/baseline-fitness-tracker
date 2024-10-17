@@ -51,7 +51,7 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ms-4">
+                <x-button class="ms-4" data-pan="user-register">
                     {{ __('Register') }}
                 </x-button>
             </div>

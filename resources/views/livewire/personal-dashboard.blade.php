@@ -29,7 +29,7 @@
 
                     <div class="flex">
                         <flux:spacer />
-                        <flux:button type="submit" variant="primary">Save</flux:button>
+                        <flux:button type="submit" variant="primary" data-pan="update-weight">Save</flux:button>
                     </div>
                 </form>
             </flux:modal>

@@ -62,7 +62,7 @@
 
                         <div class="flex mt-6">
                             <flux:spacer />
-                            <flux:button type="submit" variant="primary">Save Record</flux:button>
+                            <flux:button type="submit" variant="primary" data-pan="save-exercise-{{ $exercise->name }}">Save Record</flux:button>
                         </div>
                     </flux:fieldset>
                 </form>
